@@ -1,0 +1,23 @@
+
+button{
+    background-color: #4CAF50;
+    color:white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 30%;
+}
+container{
+    position: relative;
+}
+row
+{
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background-color: black;
+    color:white;
+    padding-left: 20px;
+    padding-right: 20px;
+}

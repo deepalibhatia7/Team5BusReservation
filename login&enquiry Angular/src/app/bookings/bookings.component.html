@@ -1,0 +1,33 @@
+<table>
+<tr>
+    <th>PhoneNumber</th>
+    <th>Email</th>
+    <th>Type</th>
+</tr>
+<tr *ngFor="let d of bookings;let i=index">
+    <td>{{d.PhoneNumber}}</td>
+    <td>{{d.Email}}</td>
+    <td>{{d.Type}}</td>
+    <td><button (click)="removeBooking(d.booking_id)">Delete</button></td>
+    <td><button (click)="getparticularBooking(d.booking_id)">Edit</button></td>
+</tr>
+</table>
+
+<hr/>
+<form #bookingform="ngForm">
+    <p>
+      Booking Id :
+        <input type="number" name="booking_id" [(ngModel)]="booking.booking_id" #bookingid=ngModel/>
+    </p>
+    <p>
+        PhoneNumber :
+          <input type="number" name="PhoneNumber" [(ngModel)]="booking.PhoneNumber" #PhoneNumber=ngModel/>
+      </p>
+      <p>
+       Email :
+          <input type="text" name="Email" [(ngModel)]="booking.Email" #Email=ngModel/>
+      </p>
+      <p><button (click)="addbooking()">Add Booking</button></p>
+
+      <!--<p><button (click)="updateparticularbooking(booking)">Update Booking</button></p!-->
+</form>

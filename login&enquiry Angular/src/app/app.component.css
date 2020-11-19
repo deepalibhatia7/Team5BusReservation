@@ -1,0 +1,18 @@
+
+footer {
+    background:black ;
+    color:White;
+    text-align:center;
+    font-size: 15px;
+    margin-top: 0px;
+    padding: 10px;
+}
+centered
+{
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+
