@@ -8,7 +8,8 @@
       </div>
           <div>
               <label>Email</label>
-                  <input type="text" placeholder="Enter Your Email" formControlName="Email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Email.errors }" />
+                  <input type="text" placeholder="Enter Your Email" formControlName="Email" class="form-control" 
+                  [ngClass]="{ 'is-invalid': submitted && f.Email.errors }" />
                   <div *ngIf="submitted && f.Email.errors" class="invalid-feedback">
                           <div *ngIf="f.Email.errors.required">
                                <small class="text-danger"> * Email id is required</small>
@@ -20,24 +21,15 @@
                 <div>
                         <label>Password</label>
                           <input type="password" placeholder="Enter Password" formControlName="Password" 
-                          class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Password.errors }"
-                          pattern="(?=.*\d)(?=.*[a-z])(?=.*[a-z](?=.*[A-Z]).{8,}" required/>
+                          class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Password.errors }"/>
                       <div *ngIf="submitted && f.Password.errors" class="invalid-feedback">
                           <div *ngIf="f.Password.errors.required">
                                <small class="text-danger">* Password is required</small>
                           </div>
-                           <div *ngIf="f.Password.errors.minlength">
-                              <small class="text-danger">* Password must be at least 8 characters</small>
+                          <div *ngIf="f.Password.errors.pattern">
+                           <small class="text-danger"> * Password not valid</small>
                           </div>
-                          <div *ngIf="f.Password.errors.uppercase">
-                            <small class="text-danger">* Password must contain min one UpperCase Letter</small>
-                        </div>
-                        <div *ngIf="f.Password.errors.number">
-                          <small class="text-danger">* Password must contain min one number</small>
-                      </div>
-                      <div *ngIf="f.Password.errors.specialcharacter">
-                        <small class="text-danger">* Password must contain min one Special Character</small>
-                    </div>
+                          
                        </div>
                       </div><br>
            <button class="registerbtn" type="Login">Login</button>&nbsp;&nbsp; 

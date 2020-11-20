@@ -11,5 +11,5 @@ export class BusesComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  
 }

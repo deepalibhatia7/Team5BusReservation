@@ -1,60 +1,20 @@
-<style>
-div{
-    background-image: "src/app/asserts/images/bus1.jpg";
-}
-</style>
-
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="jumbotron">
-                <form [formGroup]="bookingform" (ngSubmit)="onSubmit()">
+                
                     <div>
                         <h3>Book Bus Tickets</h3>
                     </div><br><br>
                     <div class="form-group">
                         <label for="location">From:</label><br>
-                        <select formControlName="location">
-                            <option value="Delhi">Delhi</option>
-                            <option value="Mumbai">Mumbai</option>
-                            <option value="Pune">pune</option>
-                            <option value="Hyderabad">Hyderabad</option>
-                            <option value="Bangalore">Bangalore</option>
+                        <div *ngif="Source_station">
+                        <select [(ngModel)]="Selected" >
+                            <option *ngfor="let s of Source_station" [(ngValue)]="s.Source_station">{{s.Source_station}}</option> 
                         </select>
-                    </div><br>
-                    <div class="form-group">
-                        <label for="location">To:</label><br>
-                        <select formControlName="location">
-                            <option value="Delhi">Delhi</option>
-                            <option value="Mumbai">Mumbai</option>
-                            <option value="Pune">pune</option>
-                            <option value="Hyderabad">Hyderabad</option>
-                            <option value="Bangalore">Bangalore</option>
-                        </select>
-                    </div><br>
-                    <div class="form-group">
-                        <label for="tickets">Number of Tickets:</label><br>
-                        <input type="number" formControlName="noOfTicket" id="tickets" value="noOfTicket"><br>
-                        <span id="ticketError" class="text-danger" *ngIf="bookingform.controls.noOfTicket.dirty && !bookingform.controls.noOfTicket.valid">* Number of tickets must be greater than 0
-                        </span>
-                    </div><br>
-                    <div class="form-group">
-                        <label for="date">Date of Journey:</label><br>
-                        <input type="date" formControlName="dateOfJourney" id="date" value="dateOfJourney"><br>
-                        <span id="dateError" class="text-danger" *ngIf="bookingform.controls.dateOfConcert.invalid && bookingform.controls.dateOfConcert.dirty">* Enter a future date
-                        </span>
-                      </div><br>
-                    <div class="form-group">
-                        <label for="Service">Service</label><br>
-                        <select formControlName="Service">
-                           <option value="AC">AC</option>
-                           <option value="Non-AC">Non-AC</option>
-                        </select>
-                      </div><br>
-                      <div class="form-group">
-                        <button class="btn btn-primary" type="submit" value="submit" [disabled]="bookingform.invalid">Book</button>
-                       </div>
-                </form>
+                    </div>
+                     
+ 
             </div>
         </div>
     </div>

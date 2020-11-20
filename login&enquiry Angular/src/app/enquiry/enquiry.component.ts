@@ -1,27 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { BusesService } from '../services/buses.services';
+
 @Component({
   selector: 'app-enquiry',
   templateUrl: './enquiry.component.html',
   styleUrls: ['./enquiry.component.css']
 })
 export class EnquiryComponent implements OnInit {
-bookingform:FormGroup;
-submitted=false;
-constructor(private formBuiilder:FormBuilder) { }
+  Source_station:string[];
+  Selected=null;
+  submitted=false;
+constructor(private busservice:BusesService) { }
 ngOnInit() {
-  this.bookingform = this.formBuiilder.group({
- },);
+  
 }
- get f(){return this.bookingform.controls;}
-
- onSubmit(){
-   this.submitted = true;
-
-   if(this.bookingform.invalid)
-   {
-     return;
-   }
-
- }
+getSourcestation(id)
+  {
+    this.busservice.getBooking(id).subscribe(data=>{this.Source_station = data as string[];
+    });
+  }
 }

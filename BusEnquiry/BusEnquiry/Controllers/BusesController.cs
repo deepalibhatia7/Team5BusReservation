@@ -17,7 +17,7 @@ namespace BusEnquiry.Controllers
         private BusprojectEntities db = new BusprojectEntities();
 
         // GET: api/Buses
-        public IQueryable<Bus> GetBuses()
+        public IEnumerable<Bus> GetBuses()
         {
             return db.Buses;
         }
