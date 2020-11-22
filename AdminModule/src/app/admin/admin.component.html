@@ -1,0 +1,49 @@
+<div class="container">
+    <div class = "row">
+      <div class="col-md-6 col-md-offset-3">
+<div class="jumbotran">
+    
+    <form [formGroup]="adminform" (ngSubmit)="doadmin()">
+        
+        <div > 
+            <div > 
+               
+            <label>Enter Admin Mailid</label>
+         <input type="text"  formControlName="mailid" email >
+        </div>
+        
+              
+          <div *ngIf="!adminform.get('mailid')?.valid && (adminform.get('mailid')?.dirty || adminform.get('mailid')?.touched)" class="error">
+            <div *ngIf="adminform.get('mailid').errors.required" >
+             <small class="text-danger">Email is required</small> 
+             
+            </div>
+            <div *ngIf="adminform.get('mailid').errors.email">
+                <small class="text-danger">invalid email address</small>
+            </div>
+          </div>
+    
+
+        </div><br><br>
+         <div>
+             <label>Enter Password</label>
+             <input type="password" formControlName="password">
+     
+         </div><br><br>
+    
+         <button class="btn btn-success" type="submit" onclick="doadmin()" >Login</button>&nbsp;&nbsp;
+         <button class="btn btn-danger" type="reset" >Reset</button>
+         <!-- <p *ngIf= isvalid>Welcome</p> -->
+    
+
+</form>
+
+</div>
+
+<h2 class="text text-danger">{{err}}</h2>
+<div *ngIf="isvalid">
+    Welcome
+</div>
+</div>
+</div>
+</div>

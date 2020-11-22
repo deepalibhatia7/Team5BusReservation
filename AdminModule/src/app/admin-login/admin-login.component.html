@@ -1,0 +1,36 @@
+<p>admin-login works!</p>
+<table>
+    <tr>
+        <th>Username</th><br>
+        <th>Password</th><br>
+        <th>E-mailid</th><br>
+    </tr><br><br>
+
+    <tr *ngFor="let ad of admindetails;let i=index">
+      <td>{{ad.Username}}</td>
+      <td>{{ad.Password}}</td>
+      <td>{{ad.Email_id}}</td>
+     
+      
+      
+      
+    </tr>
+</table>
+<form #form="ngForm">
+    <div class="form-group">
+        <label>Username</label>
+        <input type="text" class="form-control" name="Username" required [(ngModel)]="admin.Username" #name=ngModel>
+    </div><br><br>
+    <div class="form-group">
+        <label>Password</label>
+        <input type="text" class="form-control" name="Password" required [(ngModel)]="admin.Password" #name=ngModel>
+    </div><br><br>
+    <div class="form-group">
+        <label>E-mailid</label>
+        <input type="text" class="form-control" name="Email_id" required [(ngModel)]="admin.Email_id" #name=ngModel>
+    </div><br><br>
+    <td><button (click)="admin(delete.Username)">Delete</button></td>&nbsp;&nbsp;&nbsp;
+    <button (click)="insertadmin()">Add Bus</button>&nbsp;&nbsp;&nbsp;
+    <button (click)="updateadmin(form)">Update</button>
+
+</form>

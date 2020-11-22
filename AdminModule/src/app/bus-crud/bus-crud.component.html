@@ -1,0 +1,54 @@
+<p>bus-crud works!</p>
+<table>
+    <tr>
+        <th>Bus no.</th><br>
+        <th>Bus name</th><br>
+        <th>From</th><br>
+        <th>To</th><br>
+        <th>Journey date</th><br>
+        <th>Available number of seats</th><br>
+    </tr>    
+   
+    <tr *ngFor="let b of busdetails;let i=index">
+      <td>{{b.Bus_number}}</td>
+      <td>{{b.Bus_name}}</td>
+      <td>{{b.Source_station}}</td>
+      <td>{{b.Destination}}</td>
+      <td>{{b.startdate}}</td>
+      <td>{{b.Available_number_of_seats}}</td>
+     
+      
+      
+      
+    </tr>
+</table>
+<form #form="ngForm">
+    <div class="form-group">
+        <label>Bus no.</label>
+        <input type="text" class="form-control" name="Bus_number" required [(ngModel)]="bus.Bus_number" #name=ngModel>
+    </div><br><br>
+    <div class="form-group">
+        <label>Bus name</label>
+        <input type="text" class="form-control" name="Bus_name" required [(ngModel)]="bus.Bus_name" #name=ngModel>
+    </div><br><br>
+    <div class="form-group">
+        <label>From</label>
+        <input type="text" class="form-control" name="Source_station" required [(ngModel)]="bus.Source_station" #name=ngModel>
+    </div><br><br>
+    <div class="form-group">
+        <label>To</label>
+        <input type="text" class="form-control" name="Destination" required [(ngModel)]="bus.Destination" #name=ngModel>
+    </div><br><br>
+    <div class="form-group">
+        <label>Journey date</label>
+        <input type="text" class="form-control" name="startdate" required [(ngModel)]="bus.startdate" #name=ngModel>
+    </div><br><br>
+    <div class="form-group">
+        <label>Available number of seats</label>
+        <input type="text" class="form-control" name="Available_number_of_seats" required [(ngModel)]="bus.Available_number_of_seats" #name=ngModel>
+    </div><br><br>
+    <td><button (click)="bus(delete.bus)">Delete</button></td>&nbsp;&nbsp;&nbsp;
+    <button (click)="insertbus()">Add Bus</button>&nbsp;&nbsp;&nbsp;
+    <button (click)="updatebus(form)">Update</button>
+
+</form>
