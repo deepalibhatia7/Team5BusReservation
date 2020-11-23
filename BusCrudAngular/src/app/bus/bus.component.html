@@ -1,0 +1,73 @@
+<table>
+
+    <!-- <tr>
+        <th>Bus-Id</th>
+        <th>Bus-Number</th>
+        <th>Bus-Name</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Journey Date</th>
+        <th>End Date</th>
+        <th>Time of Journey</th>
+        <th>Number of Seats</th>
+
+    </tr> -->
+    <tr *ngFor="let b of buses">
+        <td>{{b.Bus_id}}</td>
+        <td>{{b.Bus_number}}</td>
+        <td>{{b.Bus_name}}</td>
+        <td>{{b.Source_station}}</td>
+        <td>{{b.Destination}}</td>
+        <td>{{b.startdate}}</td>
+        <td>{{b.enddate}}</td>
+        <td>{{b.Duration}}</td>
+        <td>{{b.Available_number_of_seats}}</td>
+
+
+    </tr>
+
+</table>
+<form #form="ngForm">
+    <div class="form-group col-sm-3">
+        <label>Bus-Name</label>
+        <input type="text" class="form-control" name="Bus_name" required [(ngModel)]="buses.Bus_name" #name=ngModel>
+    </div>
+    <div class="form-group col-sm-3">
+        <label>Bus-Number</label>
+        <input type="number" class="form-control" name="Bus_number" required [(ngModel)]="buses.Bus_number"
+            #name=ngModel>
+    </div>
+    <div class="form-group col-sm-3">
+        <label>From</label>
+        <input type="text" class="form-control" name="Source_station" required [(ngModel)]="buses.Source_station"
+            #name=ngModel>
+    </div>
+    <div class="form-group col-sm-3">
+        <label>To</label>
+        <input type="text" class="form-control" name="Destination" required [(ngModel)]="buses.Destination"
+            #name=ngModel>
+    </div>
+    <div class="form-group col-sm-3">
+        <label>Journey Date</label>
+        <input type="date" class="form-control" name="startdate" required [(ngModel)]="buses.startdate" #name=ngModel>
+    </div>
+    <div class="form-group col-sm-3">
+        <label>End Date</label>
+        <input type="date" class="form-control" name="enddate" required [(ngModel)]="buses.enddate" #name=ngModel>
+    </div>
+    <div class="form-group col-sm-3">
+        <label>Time of Journey</label>
+        <input type="time" class="form-control" name="Duration" required [(ngModel)]="buses.Duration" #name=ngModel>
+    </div>
+    <div class="form-group col-sm-3">
+        <label>Number Of Seats</label>
+        <input type="number" class="form-control" name="Available_number_of_seats" required
+            [(ngModel)]="buses.Available_number_of_seats" #name=ngModel>
+        <div class="row">
+            <div class="form-group col-sm-3">
+                <!-- <button type="submit" class="btn btn-primary">Add Bus</button> -->
+                <button (click)="insertBus()">Add Bus</button>
+            </div>
+        </div>
+    </div>
+</form>
