@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6592f31fb16a44bbbabc6fad560087a2" Name="Diagram1">
+        <EntityTypeShape EntityType="dbbusreservationModel.AdminLogin" Width="1.5" PointX="5.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbbusreservationModel.Booking" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbbusreservationModel.Bus" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbbusreservationModel.Cancel_Ticket" Width="1.5" PointX="7.5" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbbusreservationModel.Payment" Width="1.5" PointX="5.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbbusreservationModel.Registration" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbbusreservationModel.Type" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="dbbusreservationModel.FK__Booking__Bus_id__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="dbbusreservationModel.FK__Booking__Registr__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="dbbusreservationModel.FK__Booking__Type_of__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="dbbusreservationModel.FK__Cancel_Ti__Booki__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="dbbusreservationModel.FK__Payment__Booking__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="dbbusreservationModel.FK__Cancel_Ti__Trans__571DF1D5" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

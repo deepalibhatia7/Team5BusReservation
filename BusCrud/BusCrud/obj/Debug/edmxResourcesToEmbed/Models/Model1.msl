@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbbusreservationModelStoreContainer" CdmEntityContainer="dbbusreservationEntities">
+    <EntitySetMapping Name="Buses">
+      <EntityTypeMapping TypeName="dbbusreservationModel.Bus">
+        <MappingFragment StoreEntitySet="Bus">
+          <ScalarProperty Name="Bus_id" ColumnName="Bus_id" />
+          <ScalarProperty Name="Bus_number" ColumnName="Bus_number" />
+          <ScalarProperty Name="Bus_name" ColumnName="Bus_name" />
+          <ScalarProperty Name="Source_station" ColumnName="Source_station" />
+          <ScalarProperty Name="Destination" ColumnName="Destination" />
+          <ScalarProperty Name="startdate" ColumnName="startdate" />
+          <ScalarProperty Name="enddate" ColumnName="enddate" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="Available_number_of_seats" ColumnName="Available_number_of_seats" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
