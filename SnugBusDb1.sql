@@ -29,11 +29,15 @@ insert into Registration (First_Name,User_name,Email,Password,Confirmpassword,Ag
 	values(101,'Kallada Travels','Delhi','Agra','2020-02-01','2020-02-01',3,50),(102,'SRM Travels','Chennai','Trivandrum','2020-02-05','2020-02-06',14,50),
 	      (103,'VKC Travels','Mumbai','Hyderabad','2020-03-01','2020-03-02',14,25),(104,'Orange Travels','Banglore','Mumbai','2020-05-05','2020-05-06',17,50),
 		  (105,'Brightes Travels','Trivandrum','Banglore','2020-08-07','2020-08-08',14,45)
-    update Bus set Total_seats=50 where Bus_id=1001;
-	update Bus set Total_seats=50 where Bus_id=1002;
-	update Bus set Total_seats=25 where Bus_id=1003;
-	update Bus set Total_seats=50 where Bus_id=1004;
-	update Bus set Total_seats=45 where Bus_id=1005;
+    update Bus set Available_number_of_seats=47 where Bus_id=1004
+
+    update Bus set Total_seats=47 where Bus_id=1001;
+	update Bus set Total_seats=47 where Bus_id=1002;
+	update Bus set Total_seats=47 where Bus_id=1003;
+	update Bus set Total_seats=47 where Bus_id=1004;
+	update Bus set Total_seats=47 where Bus_id=1005;
+
+	
 
 
    CREATE TABLE Booking (
@@ -49,6 +53,7 @@ insert into Registration (First_Name,User_name,Email,Password,Confirmpassword,Ag
 	insert into Booking (Booking_id,Bus_id,Number_of_tickets,DateOfJourney,email,PhoneNumber,Registration_id,Type_of_Ticket,Type_id) values
 	(101,1001,02,'2020-12-12','sridhar105@gmail.com',7874859647,401,'one-way',2)
 	select * from Booking
+	update Booking set Bus_id=1002 where Booking_id=401
 
 	CREATE TABLE Type (Type_id int primary key,
 	Type_of_Ticket VARCHAR(50),Cost_per_Ticket INT NOT NULL,

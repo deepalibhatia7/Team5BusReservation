@@ -10,6 +10,7 @@ export class SeatmapreservationComponent implements OnInit {
   private seatConfig: any = null;
   Seats;
   Bus;
+  count:any=0;
   public seatmap = [];
   constructor(private seatservice:SeatMappingService) { }
   
@@ -67,8 +68,24 @@ export class SeatmapreservationComponent implements OnInit {
           },
           {
             "seat_label": "8",
+            "layout": "gg__gg"
+          },
+          {
+            "seat_label": "9",
+            "layout": "gg__gg"
+          },
+          {
+            "seat_label": "10",
+            "layout": "gg__gg"
+          },
+          {
+            "seat_label": "11",
+            "layout": "gg__gg"
+          },
+          {
+            "seat_label": "12",
             "layout": "gggggg"
-          }
+          },
         ]
       }
     ]    
@@ -83,6 +100,15 @@ export class SeatmapreservationComponent implements OnInit {
       (data)=>{this.Seats=data;}
     )
   }
+  // getdata(Busid,Ticketsbooked)
+  // {
+  //   console.log ("enter your busid");
+  //   debugger;
+  //   this.seatservice.getSeat(Busid,
+  //     Ticketsbooked).subscribe(
+  //     (data)=>{this.Seats=data;}
+  //   )
+  // }
 
   public processSeatChart ( map_data : any[] )
   {
@@ -93,6 +119,7 @@ export class SeatmapreservationComponent implements OnInit {
         for (let __counter = 0; __counter < map_data.length; __counter++) {
           var row_label = "";
           var item_map = map_data[__counter].seat_map;
+         
 
           //Get the label name and price
           row_label = "Row "+item_map[0].seat_label + " - ";
@@ -159,7 +186,10 @@ export class SeatmapreservationComponent implements OnInit {
         this.cart.selectedSeats.push(seatObject.seatLabel);
         this.cart.seatstoStore.push(seatObject.key);
         this.cart.totalamount += seatObject.price;
+        this.count++;
+        console.log(this.count);
       }
+      
       else if( seatObject.status = "booked" )
       {
         seatObject.status = "available";
@@ -169,6 +199,8 @@ export class SeatmapreservationComponent implements OnInit {
           this.cart.selectedSeats.splice(seatIndex , 1);
           this.cart.seatstoStore.splice(seatIndex , 1);
           this.cart.totalamount -= seatObject.price;
+          this.count--;
+          console.log(this.count);
         }
         
       }
