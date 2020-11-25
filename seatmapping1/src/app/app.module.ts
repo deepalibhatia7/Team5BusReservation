@@ -1,28 +1,30 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
- import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { TooltipModule } from 'ngx-bootstrap/tooltip';
-
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
-
+import {FormsModule} from '@angular/Forms';
+import {ReactiveFormsModule } from'@angular/forms';
 import { SeatmapreservationComponent } from './seatmapreservation/seatmapreservation.component';
+import {HttpClientModule} from '@angular/common/http';
+import { SeatBookingComponent } from './seat-booking/seat-booking.component';
+import { SeatMappingService } from './Services/SeatMappingService';
 
 @NgModule({
   declarations: [
     AppComponent,
+    SeatmapreservationComponent,
+    SeatBookingComponent,
     
-   
-    SeatmapreservationComponent
   ],
   imports: [
     BrowserModule,
-     NgbModule,
-    TooltipModule.forRoot()
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [SeatMappingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

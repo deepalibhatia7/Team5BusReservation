@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SeatMappingService } from '../Services/SeatMappingService';
 
 @Component({
   selector: 'app-seatmapreservation',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SeatmapreservationComponent implements OnInit {
   private seatConfig: any = null;
+  Seats;
+  Bus;
   public seatmap = [];
+  constructor(private seatservice:SeatMappingService) { }
   
   private seatChartConfig = {
     showRowsLabel : false,
@@ -31,7 +35,7 @@ export class SeatmapreservationComponent implements OnInit {
     //Process a simple bus layout
     this.seatConfig = [
       {
-        "seat_price": 250,
+        "seat_price":100,
         "seat_map": [
           {
             "seat_label": "1",
@@ -69,6 +73,15 @@ export class SeatmapreservationComponent implements OnInit {
       }
     ]    
     this.processSeatChart(this.seatConfig);
+  }
+  fetchdata(Busid,Ticketsbooked)
+  {
+    console.log ("enter your busid");
+    debugger;
+    this.seatservice.getSeat(Busid,
+      Ticketsbooked).subscribe(
+      (data)=>{this.Seats=data;}
+    )
   }
 
   public processSeatChart ( map_data : any[] )
