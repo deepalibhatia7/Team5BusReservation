@@ -19,6 +19,7 @@ namespace BusEnquiry.Controllers
         // GET: api/Buses
         public IEnumerable<Bus> GetBuses()
         {
+            var b = db.Buses.ToList();
             return db.Buses;
         }
 
@@ -74,15 +75,20 @@ namespace BusEnquiry.Controllers
         [ResponseType(typeof(Bus))]
         public IHttpActionResult PostBus(Bus bus)
         {
-            if (!ModelState.IsValid)
+            if (bus!=null)
             {
-                return BadRequest(ModelState);
+                db.Buses.Add(bus);
+                db.SaveChanges();
+
+                return Ok(bus);
             }
+            else
+            {
+                return BadRequest("No Data Found");
+            }
+            
 
-            db.Buses.Add(bus);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = bus.Bus_id }, bus);
+            
         }
 
         // DELETE: api/Buses/5

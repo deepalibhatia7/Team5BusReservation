@@ -8,6 +8,7 @@ export class BookingService {
     }
     getBooking(id)
     {
-        return this.http.get("https://localhost:44378/api/Buses");
+        return this.http.get("https://localhost:44378/api/Enquiry"+'/GetBusList');
+        
     }
 }

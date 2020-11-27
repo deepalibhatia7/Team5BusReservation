@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Busproject1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AdminLogin">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="nvarchar" MaxLength="55" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="55" Nullable="false" />
+    <Property Name="Email_id" Type="nvarchar" MaxLength="55" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Booking">
+    <Key>
+      <PropertyRef Name="Booking_id" />
+    </Key>
+    <Property Name="Booking_id" Type="int" Nullable="false" />
+    <Property Name="Bus_id" Type="int" />
+    <Property Name="Number_of_tickets" Type="int" Nullable="false" />
+    <Property Name="DateOfJourney" Type="datetime" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="55" Nullable="false" />
+    <Property Name="PhoneNumber" Type="int" Nullable="false" />
+    <Property Name="Registration_id" Type="int" Nullable="false" />
+    <Property Name="Type_of_Ticket" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Bus">
+    <Key>
+      <PropertyRef Name="Bus_id" />
+    </Key>
+    <Property Name="Bus_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Bus_number" Type="int" />
+    <Property Name="Bus_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Source_station" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Destination" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="startdate" Type="datetime" Nullable="false" />
+    <Property Name="enddate" Type="datetime" Nullable="false" />
+    <Property Name="Duration" Type="int" Nullable="false" />
+    <Property Name="Available_number_of_seats" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cancel_Ticket">
+    <Key>
+      <PropertyRef Name="Cancellation_id" />
+    </Key>
+    <Property Name="Booking_id" Type="int" Nullable="false" />
+    <Property Name="Transaction_id" Type="int" Nullable="false" />
+    <Property Name="Refunded_amount" Type="float" Nullable="false" />
+    <Property Name="Cancellation_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="Transaction_id" />
+    </Key>
+    <Property Name="Transaction_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Total_amount" Type="int" Nullable="false" />
+    <Property Name="Booking_id" Type="int" Nullable="false" />
+    <Property Name="Payment_status" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Cancel_Ticket" Type="nvarchar" MaxLength="55" Nullable="false" />
+    <Property Name="PaymentMethod" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Registration">
+    <Key>
+      <PropertyRef Name="Registration_id" />
+    </Key>
+    <Property Name="Registration_id" Type="int" Nullable="false" />
+    <Property Name="User_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Age" Type="int" Nullable="false" />
+    <Property Name="Gender" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone_number" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Type">
+    <Key>
+      <PropertyRef Name="Type_of_Ticket" />
+    </Key>
+    <Property Name="Type_of_Ticket" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Cost_per_Ticket" Type="int" Nullable="false" />
+    <Property Name="Total_Amount" Type="float" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Booking__Bus_id__398D8EEE">
+    <End Role="Bus" Type="Self.Bus" Multiplicity="0..1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bus">
+        <PropertyRef Name="Bus_id" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="Bus_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Booking__Registr__3A81B327">
+    <End Role="Registration" Type="Self.Registration" Multiplicity="1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Registration">
+        <PropertyRef Name="Registration_id" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="Registration_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Booking__Type_of__3B75D760">
+    <End Role="Type" Type="Self.Type" Multiplicity="1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type">
+        <PropertyRef Name="Type_of_Ticket" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="Type_of_Ticket" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cancel_Ti__Booki__412EB0B6">
+    <End Role="Booking" Type="Self.Booking" Multiplicity="1" />
+    <End Role="Cancel_Ticket" Type="Self.Cancel_Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Booking">
+        <PropertyRef Name="Booking_id" />
+      </Principal>
+      <Dependent Role="Cancel_Ticket">
+        <PropertyRef Name="Booking_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cancel_Ti__Trans__4222D4EF">
+    <End Role="Payment" Type="Self.Payment" Multiplicity="1" />
+    <End Role="Cancel_Ticket" Type="Self.Cancel_Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Payment">
+        <PropertyRef Name="Transaction_id" />
+      </Principal>
+      <Dependent Role="Cancel_Ticket">
+        <PropertyRef Name="Transaction_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Payment__Booking__3E52440B">
+    <End Role="Booking" Type="Self.Booking" Multiplicity="1" />
+    <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Booking">
+        <PropertyRef Name="Booking_id" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="Booking_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Busproject1ModelStoreContainer">
+    <EntitySet Name="AdminLogin" EntityType="Self.AdminLogin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Booking" EntityType="Self.Booking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bus" EntityType="Self.Bus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cancel_Ticket" EntityType="Self.Cancel_Ticket" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Registration" EntityType="Self.Registration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Booking__Bus_id__398D8EEE" Association="Self.FK__Booking__Bus_id__398D8EEE">
+      <End Role="Bus" EntitySet="Bus" />
+      <End Role="Booking" EntitySet="Booking" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Booking__Registr__3A81B327" Association="Self.FK__Booking__Registr__3A81B327">
+      <End Role="Registration" EntitySet="Registration" />
+      <End Role="Booking" EntitySet="Booking" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Booking__Type_of__3B75D760" Association="Self.FK__Booking__Type_of__3B75D760">
+      <End Role="Type" EntitySet="Type" />
+      <End Role="Booking" EntitySet="Booking" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cancel_Ti__Booki__412EB0B6" Association="Self.FK__Cancel_Ti__Booki__412EB0B6">
+      <End Role="Booking" EntitySet="Booking" />
+      <End Role="Cancel_Ticket" EntitySet="Cancel_Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cancel_Ti__Trans__4222D4EF" Association="Self.FK__Cancel_Ti__Trans__4222D4EF">
+      <End Role="Payment" EntitySet="Payment" />
+      <End Role="Cancel_Ticket" EntitySet="Cancel_Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Payment__Booking__3E52440B" Association="Self.FK__Payment__Booking__3E52440B">
+      <End Role="Booking" EntitySet="Booking" />
+      <End Role="Payment" EntitySet="Payment" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

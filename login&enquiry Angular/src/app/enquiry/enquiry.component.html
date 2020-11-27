@@ -1,21 +1,144 @@
-<div class="container">
-    <div class="row">
+<div class="container">    
+    <div class="booking-form"> 
+       <form [formGroup]="SearchForm"  (ngSubmit)="(onSubmit(SearchForm.value))">
+       <div class="form-group">
+           <div class="form-checkbox">
+           <label for="oneway">
+           <input type="radio" id="oneway" name="bustype"  value="oneway" formControlName="bustype" (change)="DisableReturn()">
+           <span></span>One way
+           </label>
+           <label for="roundtrip">
+           <input   type="radio" id="roundtrip" value="roundtrip" formControlName="bustype" (change)="EnableReturn()">
+           <span></span>Round trip
+           </label>   		
+           </div>
+       </div>
+       <div class="row">
+       <div class="col-md-6">
+           <div class="form-group">
+           <span class="form-label">From:</span>
+            <select class="form-control"  formControlName="source">
+               <option value="" selected disabled hidden>Select city</option>
+               <option *ngFor="let s of busess" value="{{s.Bus_id}}">{{s.Source_station}}({{s.Bus_id}})</option>
+           </select>
+           <div *ngIf="SearchForm.get('source').touched">
+               <div class="alert text-danger" *ngIf="SearchForm.get('source').hasError('required')">
+                       <b>Source</b> is required
+               </div>
+           </div>
+       </div>
+   </div>
+</div>
+<div class="row">
+   <div class="col-md-6">
+       <div class="form-group">
+       <span class="form-label">To:</span>
+       <select class="form-control"  formControlName="destination">
+           <option value="" selected disabled hidden>Select city</option>
+           <ng-container *ngFor="let s of busess" >
+            <option *ngIf="s.Bus_id != SearchForm.controls.source.value" value="{{s.Bus_id}}">{{s.Destination}}({{s.Bus_id}})</option>
+        </ng-container>
+
+
+       </select>
+           <div *ngIf="SearchForm.get('destination').touched">
+               <div class="alert text-danger" *ngIf="SearchForm.get('destination').hasError('required')">
+                    <b>Destination</b> is required
+               </div>
+           </div>
+       </div>
+   </div>
+</div>
+                       
+<div class="row">
+   <div class="col-md-3">
+       <div class="form-group">
+                                   <span class="form-label">Departing</span>
+                                   <input class="form-control" type="date"   [min]="todayShort" formControlName="startdate">
+                                   <div *ngIf="SearchForm.get('startdate').touched">
+                                       <div class="alert text-danger" *ngIf="SearchForm.get('startdate').hasError('required')">
+                                           <b>Error: </b>Departure Date is required.
+                                       </div>
+                                    </div>
+                               </div>
+                           </div>
+
+                           <div class="col-md-3">
+                               <div class="form-group">
+                                   <span class="form-label">Returning</span>
+                                   <input class="form-control" type="date" id="enddate" [min]="todayShort" formControlName="enddate">
+                               </div>
+                           </div>
+                           
+                       </div>
+                       <div class="row">
+                           <div class="col-md-3">
+                               <div class="form-btn">
+                                   <button mat-raised-button color="primary" class="submit-btn" type="submit" [disabled]="SearchForm.invalid" >Show Buses</button>
+                               </div>
+                           </div>
+                       </div>
+                   </form>
+               </div>
+           </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-----<div class="container">
+    <div class="booking-form">
         <div class="col-md-10 col-md-offset-1">
-            <div class="jumbotron">
-                
-                    <div>
-                        <h3>Book Bus Tickets</h3>
-                    </div><br><br>
-                    <div class="form-group">
-                        <label for="location">From:</label><br>
-                        <div *ngif="Source_station">
-                        <select [(ngModel)]="Selected" >
-                            <option *ngfor="let s of Source_station" [(ngValue)]="s.Source_station">{{s.Source_station}}</option> 
-                        </select>
-                    </div>
-                     
- 
+            <div class="jumbotron">                       
+                        <form [formGroup]="EnquiryForm" (ngSubmit)="(onSubmit(EnquiryForm.value))">
+                            <div class="form-group col-sm-3">
+                                <div class="form-Checkbox">
+                                    <div fromControlName="">
+                            <label>From:</label>&nbsp; &nbsp;
+                            <select >
+                               <option *ngFor="let s of busess">{{s.Source_station}}</option>
+                            </select>
+                            </div>
+                        </div>
+                            <div *ngIf="EnquiryForm.get('source').touched"></div>
+                            <div class="form-group col-sm-3">
+                             <label>To:</label>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                 <select >
+                                   <option *ngFor="let s of busess">{{s.Destination}}</option>
+                                 </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-sm-3">
+                              <label>Journey Date</label>
+                                <input type="date" class="form-control" name="startdate" required [(ngModel)]="busess.startdate" #name=ngModel>
+                                <div *ngIf="startdate.errors.required">
+                                    <small> class="text-danger">This field is required.</small>
+                            </div>
+                            
+                            <div class="form-group col-sm-3">
+                                <label>End Date</label>
+                                <input type="date" class="form-control" name="enddate" required [(ngModel)]="busess.enddate" #name=ngModel>
+                                <div *ngIf="enddate.errors.required">
+                                    <small>This field is required</small>
+                            </div>
+                                                       
+                        </div>
+                    
+                </form>
             </div>
         </div>
     </div>
-</div>
+</div>-->

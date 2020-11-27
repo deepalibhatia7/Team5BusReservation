@@ -22,6 +22,7 @@ namespace BusEnquiry
             config.EnableCors(new EnableCorsAttribute("http://localhost:4200", headers: "*", methods: "*"));
             // Web API routes
             config.MapHttpAttributeRoutes();
+            
 
 
             config.Routes.MapHttpRoute(

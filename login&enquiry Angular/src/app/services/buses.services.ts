@@ -1,16 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {observable} from 'rxjs/Rx';
-import {Buses} from '../models/buses';
+import{Buses} from '../models/buses.model';
 
 @Injectable({ providedIn: "root" })
 export class BusesService {
+    formdata:Buses;
+    list:Buses[];
     constructor(private http: HttpClient) {
+        this.list=[];
 
     }
-    getBooking(): Observable<Buses[]>
+    public getbusdata()
     {
-        debugger;
-        return this.http.get("https://localhost:44378/api/Buses").map(res=>res);
+        
+        return this.http.get("https://localhost:44378/api/Buses");
+    }
+    public searchBusList(Source_station,Destination,startdate)
+    {
+        return this.http.get("https://localhost:44378/api/Enquiry?Source_station="+Source_station+"&Destination="+Destination+"&startdate="+startdate);
     }
 }

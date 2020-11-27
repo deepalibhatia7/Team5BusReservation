@@ -1,0 +1,61 @@
+<p>bus-select works!</p>
+<div class="main">
+    <div class="row">
+        <div class="col">
+            <div class="list-group">
+                <div class="heading">
+                    <div class="col gutter-col" >
+                        <div class="title ml-1">Flight Details</div>
+                    </div>
+                    
+                </div>
+                <div *ngFor="let b of buses">
+                    <button type="button" class="list-group-item list-group-item-action" (click)="selectBus(bus)">
+                        <div class="row gutter-row">
+                            <div class="col gutter-col ">
+                                <div class="text-muted"><b>{{b.Bus_id}}</b></div>
+                                <div class="row">
+                                    <!-- <h5 class="mb-1"><b>{{ b.startdate| timeTransform: b.startdate}}-{{b.enddate| timeTransform: b.enddate}}</b></h5>     -->
+                                    &nbsp;<h5 class="mb-1"><b>{{b.Bus_id}}</b></h5>
+                                </div><br>
+                                
+                            </div>
+                            
+                        </div>
+                    </button>
+                </div>
+                <div class="row" *ngIf="buses.length==0">
+                    <div class="title ml-1">NO BUSES FOUND</div>
+                </div>
+            </div>
+        </div>
+        <div class="col" *ngIf="isReturn">
+            <div class="list-group">
+                <div class="heading">
+                    <div class="col gutter-col" >
+                        <div class="title ml-1">Bus Details</div>
+                    </div>
+                    
+                </div>
+                <div *ngFor="let bus of returnBuses|orderBy: order2:reverse2">
+                    <button type="button" class="list-group-item list-group-item-action"(click)="selectReturnBus()">
+                        <div class="row gutter-row">
+                            <div class="col gutter-col ">
+                                <div class="text-muted"><b>{{bus.Bus_id}}</b></div>
+                                <div class="row">
+                                    <!-- <h5 class="mb-1"><mat-icon [inline]="true">schedule</mat-icon><b>{{bus.startdate| timeTransform: bus.startdate}}-{{bus.enddate| timeTransform: bus.enddate}}</b></h5> -->
+                                    &nbsp;<h5 class="mb-1"><b><mat-icon [inline]="true">Bus-Reaching</mat-icon>{{bus.Bus_id}}</b></h5>
+                                </div><br>
+                            </div>
+                            
+                        </div>
+                    </button>
+                </div>
+                <div class="row" *ngIf="returnBuses.length==0"><div class="title ml-1">NO RETURN BUSES FOUND</div>
+                </div>
+            </div>  
+            
+        </div>
+    </div>
+    <div class="row"><button mat-raised-button color="primary" class="continue" data-toggle="modal" data-target="#myModal" *ngIf="selected && (returnSelected || (!returnSelected&&!isReturn))" >BOOK</button></div>     
+</div>

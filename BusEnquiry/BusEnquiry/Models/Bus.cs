@@ -7,11 +7,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+
 namespace BusEnquiry.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Runtime.Serialization;
+
+    [DataContract]
+
     public partial class Bus
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,15 +23,25 @@ namespace BusEnquiry.Models
         {
             this.Bookings = new HashSet<Booking>();
         }
-    
+        [DataMember]
         public int Bus_id { get; set; }
+        [DataMember]
         public Nullable<int> Bus_number { get; set; }
+        [DataMember]
         public string Bus_name { get; set; }
+        [DataMember]
         public string Source_station { get; set; }
+        [DataMember]
         public string Destination { get; set; }
+        [DataMember]
         public System.DateTime startdate { get; set; }
+        [DataMember]
+
         public System.DateTime enddate { get; set; }
+        [DataMember]
+
         public int Duration { get; set; }
+        [DataMember]
         public int Available_number_of_seats { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

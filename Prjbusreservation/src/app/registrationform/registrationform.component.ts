@@ -9,6 +9,7 @@ import {MustMatch} from'../mustmatch';
   styleUrls: ['./registrationform.component.css']
 })
 export class RegistrationformComponent implements OnInit {
+  pwdpattern="^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,15}$";
   registerForm: FormGroup;
   submitted = false; 
   constructor(private formBuilder:FormBuilder) { }
@@ -19,7 +20,7 @@ export class RegistrationformComponent implements OnInit {
       gender: ['',Validators.required],
       userName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.pattern(this.pwdpattern)]],
       confirmPassword: ['', Validators.required]
     },
     {validator: MustMatch('password', 'confirmPassword')}
