@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BusTeamModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AdminLogin">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="String" MaxLength="55" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="55" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="55" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Booking">
+    <Key>
+      <PropertyRef Name="Booking_Id" />
+    </Key>
+    <Property Name="Booking_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Bus_Id" Type="Int32" />
+    <Property Name="Number_of_tickets" Type="Int32" Nullable="false" />
+    <Property Name="Start_Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Email" Type="String" MaxLength="55" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone_Number" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Registration_Id" Type="Int32" Nullable="false" />
+    <Property Name="Type_of_Ticket" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Type_Id" Type="Int32" />
+    <NavigationProperty Name="Bus" Relationship="Self.FK__Booking__Bus_Id__4316F928" FromRole="Booking" ToRole="Bus" />
+    <NavigationProperty Name="Registration" Relationship="Self.FK__Booking__Registr__440B1D61" FromRole="Booking" ToRole="Registration" />
+    <NavigationProperty Name="Type" Relationship="Self.FK__Booking__Type_Id__44FF419A" FromRole="Booking" ToRole="Type" />
+    <NavigationProperty Name="Cancel_Ticket" Relationship="Self.FK__Cancel_Ti__Booki__4CA06362" FromRole="Booking" ToRole="Cancel_Ticket" />
+    <NavigationProperty Name="Payments" Relationship="Self.FK__Payment__Booking__49C3F6B7" FromRole="Booking" ToRole="Payment" />
+  </EntityType>
+  <EntityType Name="Bus">
+    <Key>
+      <PropertyRef Name="Bus_Id" />
+    </Key>
+    <Property Name="Bus_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Bus_Number" Type="Int32" />
+    <Property Name="Bus_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Source_Station" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Destination" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Start_Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="End_Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Journey_Time" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="Available_number_of_seats" Type="Int32" Nullable="false" />
+    <Property Name="Total_Tickets" Type="Int32" />
+    <NavigationProperty Name="Bookings" Relationship="Self.FK__Booking__Bus_Id__4316F928" FromRole="Bus" ToRole="Booking" />
+    <NavigationProperty Name="Types" Relationship="Self.FK__Type__Bus_Id__3F466844" FromRole="Bus" ToRole="Type" />
+  </EntityType>
+  <EntityType Name="Cancel_Ticket">
+    <Key>
+      <PropertyRef Name="Cancellation_Id" />
+    </Key>
+    <Property Name="Booking_Id" Type="Int32" Nullable="false" />
+    <Property Name="Transaction_Id" Type="Int32" Nullable="false" />
+    <Property Name="Refunded_Amount" Type="Double" Nullable="false" />
+    <Property Name="Cancellation_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Booking" Relationship="Self.FK__Cancel_Ti__Booki__4CA06362" FromRole="Cancel_Ticket" ToRole="Booking" />
+    <NavigationProperty Name="Payment" Relationship="Self.FK__Cancel_Ti__Trans__4D94879B" FromRole="Cancel_Ticket" ToRole="Payment" />
+  </EntityType>
+  <EntityType Name="OTP">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OTP1" Type="Int32" />
+    <Property Name="Registration_Id" Type="Int32" />
+    <NavigationProperty Name="Registration" Relationship="Self.FK__OTP__Registratio__52593CB8" FromRole="OTP" ToRole="Registration" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="Transaction_Id" />
+    </Key>
+    <Property Name="Transaction_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Total_Amount" Type="Int32" Nullable="false" />
+    <Property Name="Booking_Id" Type="Int32" Nullable="false" />
+    <Property Name="Payment_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Booking" Relationship="Self.FK__Payment__Booking__49C3F6B7" FromRole="Payment" ToRole="Booking" />
+    <NavigationProperty Name="Cancel_Ticket" Relationship="Self.FK__Cancel_Ti__Trans__4D94879B" FromRole="Payment" ToRole="Cancel_Ticket" />
+  </EntityType>
+  <EntityType Name="Registration">
+    <Key>
+      <PropertyRef Name="Registration_Id" />
+    </Key>
+    <Property Name="Registration_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="First_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="User_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Age" Type="Int32" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Phone_Number" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Bookings" Relationship="Self.FK__Booking__Registr__440B1D61" FromRole="Registration" ToRole="Booking" />
+    <NavigationProperty Name="OTPs" Relationship="Self.FK__OTP__Registratio__52593CB8" FromRole="Registration" ToRole="OTP" />
+  </EntityType>
+  <EntityType Name="Type">
+    <Key>
+      <PropertyRef Name="Type_Id" />
+    </Key>
+    <Property Name="Type_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type_of_Ticket" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Cost_per_Ticket" Type="Int32" Nullable="false" />
+    <Property Name="Total_Amount" Type="Double" Nullable="false" />
+    <Property Name="Bus_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Bookings" Relationship="Self.FK__Booking__Type_Id__44FF419A" FromRole="Type" ToRole="Booking" />
+    <NavigationProperty Name="Bus" Relationship="Self.FK__Type__Bus_Id__3F466844" FromRole="Type" ToRole="Bus" />
+  </EntityType>
+  <Association Name="FK__Booking__Bus_Id__4316F928">
+    <End Role="Bus" Type="Self.Bus" Multiplicity="0..1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bus">
+        <PropertyRef Name="Bus_Id" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="Bus_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Booking__Registr__440B1D61">
+    <End Role="Registration" Type="Self.Registration" Multiplicity="1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Registration">
+        <PropertyRef Name="Registration_Id" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="Registration_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Booking__Type_Id__44FF419A">
+    <End Role="Type" Type="Self.Type" Multiplicity="0..1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type">
+        <PropertyRef Name="Type_Id" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="Type_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cancel_Ti__Booki__4CA06362">
+    <End Role="Booking" Type="Self.Booking" Multiplicity="1" />
+    <End Role="Cancel_Ticket" Type="Self.Cancel_Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Booking">
+        <PropertyRef Name="Booking_Id" />
+      </Principal>
+      <Dependent Role="Cancel_Ticket">
+        <PropertyRef Name="Booking_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Payment__Booking__49C3F6B7">
+    <End Role="Booking" Type="Self.Booking" Multiplicity="1" />
+    <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Booking">
+        <PropertyRef Name="Booking_Id" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="Booking_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Type__Bus_Id__3F466844">
+    <End Role="Bus" Type="Self.Bus" Multiplicity="1" />
+    <End Role="Type" Type="Self.Type" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bus">
+        <PropertyRef Name="Bus_Id" />
+      </Principal>
+      <Dependent Role="Type">
+        <PropertyRef Name="Bus_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cancel_Ti__Trans__4D94879B">
+    <End Role="Payment" Type="Self.Payment" Multiplicity="1" />
+    <End Role="Cancel_Ticket" Type="Self.Cancel_Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Payment">
+        <PropertyRef Name="Transaction_Id" />
+      </Principal>
+      <Dependent Role="Cancel_Ticket">
+        <PropertyRef Name="Transaction_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OTP__Registratio__52593CB8">
+    <End Role="Registration" Type="Self.Registration" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="OTP" Type="Self.OTP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Registration">
+        <PropertyRef Name="Registration_Id" />
+      </Principal>
+      <Dependent Role="OTP">
+        <PropertyRef Name="Registration_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BusTeamEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AdminLogins" EntityType="Self.AdminLogin" />
+    <EntitySet Name="Bookings" EntityType="Self.Booking" />
+    <EntitySet Name="Buses" EntityType="Self.Bus" />
+    <EntitySet Name="Cancel_Ticket" EntityType="Self.Cancel_Ticket" />
+    <EntitySet Name="OTPs" EntityType="Self.OTP" />
+    <EntitySet Name="Payments" EntityType="Self.Payment" />
+    <EntitySet Name="Registrations" EntityType="Self.Registration" />
+    <EntitySet Name="Types" EntityType="Self.Type" />
+    <AssociationSet Name="FK__Booking__Bus_Id__4316F928" Association="Self.FK__Booking__Bus_Id__4316F928">
+      <End Role="Bus" EntitySet="Buses" />
+      <End Role="Booking" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Booking__Registr__440B1D61" Association="Self.FK__Booking__Registr__440B1D61">
+      <End Role="Registration" EntitySet="Registrations" />
+      <End Role="Booking" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Booking__Type_Id__44FF419A" Association="Self.FK__Booking__Type_Id__44FF419A">
+      <End Role="Type" EntitySet="Types" />
+      <End Role="Booking" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cancel_Ti__Booki__4CA06362" Association="Self.FK__Cancel_Ti__Booki__4CA06362">
+      <End Role="Booking" EntitySet="Bookings" />
+      <End Role="Cancel_Ticket" EntitySet="Cancel_Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Payment__Booking__49C3F6B7" Association="Self.FK__Payment__Booking__49C3F6B7">
+      <End Role="Booking" EntitySet="Bookings" />
+      <End Role="Payment" EntitySet="Payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Type__Bus_Id__3F466844" Association="Self.FK__Type__Bus_Id__3F466844">
+      <End Role="Bus" EntitySet="Buses" />
+      <End Role="Type" EntitySet="Types" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cancel_Ti__Trans__4D94879B" Association="Self.FK__Cancel_Ti__Trans__4D94879B">
+      <End Role="Payment" EntitySet="Payments" />
+      <End Role="Cancel_Ticket" EntitySet="Cancel_Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OTP__Registratio__52593CB8" Association="Self.FK__OTP__Registratio__52593CB8">
+      <End Role="Registration" EntitySet="Registrations" />
+      <End Role="OTP" EntitySet="OTPs" />
+    </AssociationSet>
+    <FunctionImport Name="sp_availabletickets">
+      <Parameter Name="Bus_Id" Mode="In" Type="Int32" />
+      <Parameter Name="availablenooftickets" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_cancelTicket" ReturnType="Collection(BusTeamModel.sp_cancelTicket_Result)">
+      <Parameter Name="Registration_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_cancelTicket_Result">
+    <Property Type="Int32" Name="Booking_Id" Nullable="false" />
+    <Property Type="Int32" Name="Bus_Id" Nullable="true" />
+    <Property Type="DateTime" Name="Start_Date" Nullable="false" />
+    <Property Type="Int32" Name="Cancellation_Id" Nullable="false" />
+    <Property Type="Int32" Name="Transaction_Id" Nullable="false" />
+    <Property Type="Int32" Name="Total_Amount" Nullable="false" />
+    <Property Type="Double" Name="Refunded_Amount" Nullable="false" />
+    <Property Type="Int32" Name="Registration_Id" Nullable="false" />
+  </ComplexType>
+</Schema>

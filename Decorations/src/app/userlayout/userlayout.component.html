@@ -1,0 +1,19 @@
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Bus Reservation Userdashboard</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a  routerLink="/home">Bookings</a></li>
+        <li class="active"><a  routerLink="registration">Profile</a></li>
+        <li class="active"><a  routerLink="changepassword">Change Password</a></li>
+        <li class="active"><a  routerLink="wallet">Wallet</a></li>
+
+        <li><a (click)="logOff()">LogOff</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+

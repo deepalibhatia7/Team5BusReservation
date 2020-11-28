@@ -1,0 +1,50 @@
+.topnav {
+    background-color: rgb(116, 66, 173);
+    overflow: hidden;
+  }
+  
+  /* Style the links inside the navigation bar */
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  /* Change the color of links on hover */
+  .topnav a:hover {
+    background-color: rgb(177, 171, 171);
+    color: rgb(241, 233, 233);
+  }
+
+  .footer {
+    background-color: rgb(26, 7, 48);
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  /* Style the links inside the navigation bar */
+  .footer a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  /* Change the color of links on hover */
+  .footer a:hover {
+    background-color: rgb(177, 171, 171);
+    color: rgb(241, 233, 233);
+  }
+  .footer p{
+      color: #f2f2f2;
+      text-align: end;
+  }
+  

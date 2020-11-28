@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3612acad2f91419e93fbb4564ce1360d" Name="Diagram1">
+        <EntityTypeShape EntityType="BusTeamModel.AdminLogin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusTeamModel.Booking" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusTeamModel.Bus" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusTeamModel.Cancel_Ticket" Width="1.5" PointX="9.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusTeamModel.OTP" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusTeamModel.Payment" Width="1.5" PointX="7.5" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusTeamModel.Registration" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusTeamModel.Type" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <AssociationConnector Association="BusTeamModel.FK__Booking__Bus_Id__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="BusTeamModel.FK__Booking__Registr__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="BusTeamModel.FK__Booking__Type_Id__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="BusTeamModel.FK__Cancel_Ti__Booki__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="BusTeamModel.FK__Payment__Booking__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="BusTeamModel.FK__Type__Bus_Id__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="BusTeamModel.FK__Cancel_Ti__Trans__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="BusTeamModel.FK__OTP__Registratio__52593CB8" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
