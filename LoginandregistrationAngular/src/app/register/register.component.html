@@ -1,0 +1,91 @@
+<div class="container">
+  <h2>Registration Form</h2>
+  <div>
+      <form #userform="ngForm" (ngSubmit)="onSubmit(userform)" novalidate>
+          <p>
+              <label for="First_Name">First Name*</label>
+              <input required type="text" name="First_Name" [(ngModel)]=newuser.First_Name #First_Name="ngModel">
+          </p>
+          <div *ngIf="!First_Name?.valid && (First_Name?.dirty || First_Name?.touched)" class="error">
+              <div *ngIf="First_Name.errors.required">
+                  <small class="text-danger">First Name is Required</small>
+              </div>
+          </div>
+          <p>
+              <label for="User_Name">User Name*</label>
+              <input required type="text" name="User_Name" [(ngModel)]=newuser.User_Name #User_Name="ngModel">
+          </p>
+          <div *ngIf="!User_Name?.valid && (User_Name?.dirty || User_Name?.touched)" class="error">
+              <div *ngIf="User_Name.errors.required">
+                  <small class="text-danger">User Name is Required</small>
+              </div>
+          </div>
+          <p>
+              <label for="Email">Email ID*</label>
+              <input required type="text" name="Email" [(ngModel)]=newuser.Email #Email="ngModel" required email>
+          </p>
+          <div *ngIf="!Email?.valid && (Email?.dirty || Email?.touched)" class="error">
+              <div *ngIf="Email.errors.required">
+                  <small class="text-danger">Mail id is Required</small>
+              </div>
+              <div *ngIf="Email.errors.email">
+                  <small class="text-danger">invalid email address</small>
+              </div>
+          </div>
+          <p>
+              <label for="Password">Password</label>
+              <input required type="text" name="Password" [(ngModel)]=newuser.Password #Password="ngModel" required
+                  Password>
+          </p>
+          <div *ngIf="!Password?.valid && (Password?.dirty || Password?.touched)" class="error">
+              <div *ngIf="Password.errors.required">
+                  <small class="text-danger">Password is Required</small>
+              </div>
+              <div *ngIf="Password.errors.required">
+                  <small class="text-danger">invalid Password</small>
+              </div>
+          </div>
+          <p>
+              <label for="Password">Confirm Password</label>
+              <input required type="text" name="Password" [(ngModel)]=newuser.Password #Password="ngModel" required
+                  Password>
+          </p>
+          <div *ngIf="!Password?.valid && (Password?.dirty || Password?.touched)" class="error">
+              <div *ngIf="Password.errors.required">
+                  <small class="text-danger">Confirm Password is Required</small>
+              </div>
+              <div *ngIf="Password.errors.required">
+                  <small class="text-danger">invalid Confirm Password</small>
+              </div>
+          </div>
+          <p>
+              <label for="Age">Age</label>
+              <input required type="number" name="Age" [(ngModel)]=newuser.Age #Age="ngModel" required Age>
+          </p>
+          <div *ngIf="!Age?.valid && (Age?.dirty || Age?.touched)" class="error">
+              <div *ngIf="Age.errors.required">
+                  <small class="text-danger">Age is Required</small>
+              </div>
+          </div>
+          <p>
+              <label for="Phone_Number">Mobile Number*</label>
+              <input required minlength="10" maxlength="10" type="text" id="Phone_Number" name="Phone_Number"
+                  [(ngModel)]=newuser.Phone_Number #Phone_Number="ngModel">
+          </p>
+          <div *ngIf="!Phone_Number?.valid && (Phone_Number?.dirty || Phone_Number?.touched)" class="error">
+              <div *ngIf="Phone_Number.errors.required">
+                  <small class="text-danger">Mobile Number is Required</small>
+              </div>
+              <div *ngIf="Phone_Number.errors.minlength">
+                  <small class="text-danger">Mobile Number should be of 10 digits</small>
+              </div>
+          </div>
+          <p>
+              <button class="btn btn-primary" type="submit" [disabled]="userform.invalid" routerLink="/home">
+                  Register</button>
+          </p>
+
+          <!-- {{userform.valid}} -->
+      </form>
+  </div>
+</div>

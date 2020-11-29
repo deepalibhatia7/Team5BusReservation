@@ -1,0 +1,15 @@
+<form #empform="ngForm">
+    <p>
+      Enter Email_id
+        <input type="text" name="Email" [(ngModel)]=emp.Email #Email=ngModel/>
+    </p>
+    <p>
+        Enter Password
+          <input type="text" name="Password" [(ngModel)]=emp.Password #Password=ngModel/>
+      </p>
+      <p>
+     
+      <p><button (click)="doLogin()">Login</button></p>
+
+     <h3><span>{{err}}</span></h3>
+</form>
